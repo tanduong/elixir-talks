@@ -1,4 +1,7 @@
 <!-- livebook:{"file_entries":[{"name":"ElixirConcurency.png","type":"attachment"},{"name":"ElixirConcurent.png","type":"attachment"},{"name":"thank.jpeg","type":"attachment"}]} -->
+# Metadata
+
+[Livebook](https://elixir-talk.fly.dev/)
 
 # Elixir For Programmers
 
@@ -33,7 +36,7 @@
 
 <!-- livebook:{"break_markdown":true} -->
 
-![Concurency Built In](files/ElixirConcurency.png)
+![You merely adopted concurency. I was born in it, moled by it.](files/ElixirConcurency.png)
 
 ## Learning a new language
 
@@ -264,7 +267,7 @@ for <<c <- " hello world ">>, c != ?\s, into: "", do: <<c>>
 for {key, val} <- %{"a" => 1, "b" => 2}, into: %{}, do: {key, val * val}
 ```
 
-![The world is concurrent](files/ElixirConcurent.png)
+![The world is concurrent, things don't share data and communicate with message, things fail](files/ElixirConcurent.png)
 
 ```elixir
 defmodule Messaging do
