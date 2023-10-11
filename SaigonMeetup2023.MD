@@ -244,25 +244,6 @@ IO.inspect([1, 2, 3], label: "list")
 IO.inspect({1, 2, 3}, label: "tuple")
 ```
 
-<!-- livebook:{"output":true} -->
-
-```
-integer: 1
-integer: 31
-float: 1.0
-boolean: true
-atom / symbol: :atom
-string: "elixir"
-list: [1, 2, 3]
-tuple: {1, 2, 3}
-```
-
-<!-- livebook:{"output":true} -->
-
-```
-{1, 2, 3}
-```
-
 ```elixir
 # If
 if nil do
@@ -270,12 +251,6 @@ if nil do
 else
   "This will"
 end
-```
-
-<!-- livebook:{"output":true} -->
-
-```
-"This will"
 ```
 
 ```elixir
@@ -292,21 +267,9 @@ case {1, 2, 3} do
 end
 ```
 
-<!-- livebook:{"output":true} -->
-
-```
-"This clause will match and bind x to 2 in this clause, x = 2"
-```
-
 ```elixir
 # Map
 map = %{:a => 1, 2 => :b}
-```
-
-<!-- livebook:{"output":true} -->
-
-```
-%{2 => :b, :a => 1}
 ```
 
 ```elixir
@@ -318,12 +281,6 @@ defmodule Math do
 end
 
 Math.sum(1, 2)
-```
-
-<!-- livebook:{"output":true} -->
-
-```
-3
 ```
 
 ```elixir
@@ -362,19 +319,6 @@ index2 =
   |> IO.inspect(label: "Won't find index")
 
 Enum.at(list, index) == value
-```
-
-<!-- livebook:{"output":true} -->
-
-```
-Will find index: 1
-Won't find index: -1
-```
-
-<!-- livebook:{"output":true} -->
-
-```
-true
 ```
 
 ```elixir
@@ -422,52 +366,22 @@ end
 QuickSort.sort([2, 1, 5, 4, 3])
 ```
 
-<!-- livebook:{"output":true} -->
-
-```
-[1, 2, 3, 4, 5]
-```
-
 ## Comprehension
 
 ```elixir
 for n <- 1..4, do: n * n
 ```
 
-<!-- livebook:{"output":true} -->
-
-```
-[1, 4, 9, 16]
-```
-
 ```elixir
 for i <- [:a, :b, :c], j <- [1, 2], do: {i, j}
-```
-
-<!-- livebook:{"output":true} -->
-
-```
-[a: 1, a: 2, b: 1, b: 2, c: 1, c: 2]
 ```
 
 ```elixir
 for <<c <- " hello world ">>, c != ?\s, into: "", do: <<c>>
 ```
 
-<!-- livebook:{"output":true} -->
-
-```
-"helloworld"
-```
-
 ```elixir
 for {key, val} <- %{"a" => 1, "b" => 2}, into: %{}, do: {key, val * val}
-```
-
-<!-- livebook:{"output":true} -->
-
-```
-%{"a" => 1, "b" => 4}
 ```
 
 ## Concurency
@@ -490,18 +404,6 @@ end
 Messaging.run()
 ```
 
-<!-- livebook:{"output":true} -->
-
-```
-"Got hello from #PID<0.714.0>"
-```
-
-<!-- livebook:{"output":true} -->
-
-```
-"Got hello from #PID<0.714.0>"
-```
-
 ```elixir
 defmodule Parallel do
   def pmap(collection, fun) do
@@ -520,16 +422,45 @@ result = Parallel.pmap(0..10, fn x -> x * x end)
 IO.inspect(result)
 ```
 
-<!-- livebook:{"output":true} -->
+## GenServer
 
-```
-[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-```
+```elixir
+defmodule Counter do
+  use GenServer
 
-<!-- livebook:{"output":true} -->
+  @impl true
+  def init(init_arg) do
+    {:ok, init_arg}
+  end
 
-```
-[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+  def start_link do
+    GenServer.start_link(__MODULE__, 0, name: __MODULE__)
+  end
+
+  @impl true
+  def handle_call(:get, _from, count) do
+    {:reply, count, count}
+  end
+
+  @impl true
+  def handle_cast(:increment, count) do
+    new_count = count + 1
+    {:noreply, new_count}
+  end
+end
+
+pid =
+  case Counter.start_link() do
+    {:ok, pid} -> pid
+    {:error, {:already_started, pid}} -> pid
+  end
+
+GenServer.cast(pid, :increment)
+GenServer.cast(pid, :increment)
+GenServer.cast(pid, :increment)
+GenServer.cast(pid, :increment)
+# Output: 1
+GenServer.call(pid, :get)
 ```
 
 ## Metaprogramming
@@ -592,23 +523,31 @@ defmodule Sample.App do
 end
 ```
 
-## The bad
+## Macro
 
-* Editor support is okay, not great
-* Interactive debugger never worked for me
-* Most likely to write API client myself
-* Not as many external libraries to choose from
 
-## Surprises
 
-* Elixir via expose us to the complexity of the following:
+```elixir
+defmodule MyLogger do
+  defmacro log(msg) do
+    if Application.get_env(:logger, :enabled, true) do
+      quote do
+        IO.puts("Logged message: #{unquote(msg)}")
+      end
+    end
+  end
+end
 
-  * String
-  * DateTime: for example, do you know that [time can go backward](https://elixirforum.com/t/system-system-time-vs-system-os-time/48529)?
+defmodule Example do
+  require MyLogger
 
-* And Erlang has built it's own world and philosophy for how to built Robust application.
+  def run do
+    MyLogger.log("This is a log message")
+  end
+end
 
-* Typing is coming to Elixir and it will be great!
+Example.run()
+```
 
 ## Question & Discussion
 
