@@ -1,19 +1,14 @@
-<!-- livebook:{"file_entries":[{"name":"ElixirConcurency.png","type":"attachment"},{"name":"ElixirConcurent.png","type":"attachment"},{"name":"thank.jpeg","type":"attachment"}]} -->
-# Metadata
-
-[Livebook](https://elixir-talk.fly.dev/)
-
-<!-- livebook:{"file_entries":[{"name":"ElixirConcurency.png","type":"attachment"},{"name":"ElixirConcurent.png","type":"attachment"},{"name":"thank.jpeg","type":"attachment"}]} -->
+<!-- livebook:{"file_entries":[{"name":"ElixirConcurency.png","type":"attachment"},{"name":"ElixirConcurent.png","type":"attachment"},{"name":"friends.png","type":"attachment"},{"name":"thank.jpeg","type":"attachment"}]} -->
 
 # Elixir For Programmers
 
-## Me - Tan Duong
+## About Me - Tan Duong
 
 * 9 Years of writing code in production
 * 1 Year with Elixir
 * Wrote Ruby/Python/Java/Javascript/Typescript
 
-## Humanly
+## About Humanly
 
 * Website: https://www.humanly.io/
 
@@ -26,6 +21,10 @@
 
   * Monolith Elixir/Phoenix
   * Frontend mixed Phoenix/LiveView/Elm
+
+## About You?
+
+![New Friends](files/friends.png)
 
 ## What would you expect in a programming language?
 
@@ -53,6 +52,14 @@
 <!-- livebook:{"break_markdown":true} -->
 
 ![You merely adopted concurency. I was born in it, moled by it.](files/ElixirConcurency.png)
+
+<!-- livebook:{"break_markdown":true} -->
+
+[From Elixir creator](https://evrone.com/blog/jose-valim-interview) (rephrased)
+
+> I had two goals: extensibility and productivity. Productivity was about focusing on having really good tooling. There are other languages, like Ruby and Go, that focus on tooling and the development experience. Extensibility boiled down to two things: Protocols to deal with polymorphism similar to Clojure and metaprogramming with Macro.
+
+## Some ChatGPT sentiments
 
 ## Elixir Pros
 
@@ -152,6 +159,8 @@ Learning a new programming language, like Elixir, offers more than just masterin
 
 By focusing on these transferable skills while learning a new language like Elixir, you not only gain proficiency in that language but also become a more adaptable, versatile, and effective programmer overall.
 
+## Okay, let's learn some Elixir
+
 ### Some hands on tutorials
 
 * [Elixir Koans](https://github.com/elixirkoans/elixir-koans)
@@ -168,7 +177,6 @@ By focusing on these transferable skills while learning a new language like Elix
 
   * Basic types
   * Basic operators
-  * Pattern matching
   * conditional (case, cond, and if)
   * String
   * Map/Dictionary
@@ -182,6 +190,7 @@ By focusing on these transferable skills while learning a new language like Elix
 
 * Something maybe new with Elixir
 
+  * Pattern matching
   * Recursion
   * Enumerables and streams
   * Processes
@@ -205,10 +214,6 @@ By focusing on these transferable skills while learning a new language like Elix
 * Deployment: [Phoenix Release](https://hexdocs.pm/phoenix/releases.html)
 
 ## Good part
-
-[From Elixir creator](https://evrone.com/blog/jose-valim-interview) (rephrased)
-
-> I had two goals: extensibility and productivity. Productivity was about focusing on having really good tooling. There are other languages, like Ruby and Go, that focus on tooling and the development experience. Extensibility boiled down to two things: Protocols to deal with polymorphism similar to Clojure and metaprogramming with Macro.
 
 ## Some syntax showcase
 
