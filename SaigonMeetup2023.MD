@@ -6,7 +6,7 @@
 
 * 9 Years of writing code in production
 * 1 Year with Elixir
-* Wrote Ruby/Python/Java/Javascript/Typescript
+* Wrote code in Ruby/Python/Java/Javascript/Typescript
 
 ## About Humanly
 
