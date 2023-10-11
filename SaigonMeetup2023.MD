@@ -26,6 +26,12 @@
 
 ![New Friends](files/friends.png)
 
+<!-- livebook:{"break_markdown":true} -->
+
+* Have you wrote Elixir? Over 1 year? Retroactively, is it worth the time learning?
+* Have you wrote Ruby/Rails? Python? Go? Scala? Javascript/Typescript?
+* What do you do?
+
 ## What would you expect in a programming language?
 
 | Category                    | My rating for Elixir |
@@ -205,6 +211,8 @@ By focusing on these transferable skills while learning a new language like Elix
 
 ## Build Applications
 
+Elixir ecosystem have most things you'll need
+
 * Elixir Lang: https://elixir-lang.org/
 * Phoenix Framework: https://www.phoenixframework.org/
 * ORM: [Ecto](https://hexdocs.pm/ecto/getting-started.html)
@@ -212,8 +220,6 @@ By focusing on these transferable skills while learning a new language like Elix
 * Task runner: [Mix](https://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html)
 * Background Job: [Oban](https://hexdocs.pm/oban/Oban.html)
 * Deployment: [Phoenix Release](https://hexdocs.pm/phoenix/releases.html)
-
-## Good part
 
 ## Some syntax showcase
 
@@ -378,6 +384,8 @@ for <<c <- " hello world ">>, c != ?\s, into: "", do: <<c>>
 for {key, val} <- %{"a" => 1, "b" => 2}, into: %{}, do: {key, val * val}
 ```
 
+## Concurency
+
 ![The world is concurrent, things don't share data and communicate with message, things fail](files/ElixirConcurent.png)
 
 ```elixir
@@ -412,6 +420,66 @@ end
 result = Parallel.pmap(0..10, fn x -> x * x end)
 
 IO.inspect(result)
+```
+
+## Metaprogramming
+
+A lot of Elixir is written in Elixir. Metaprogramming make it possible to create expressive program.
+
+```elixir
+# Ecto ORM example
+
+# In your config/config.exs file
+config :my_app, ecto_repos: [Sample.Repo]
+
+config :my_app, Sample.Repo,
+  database: "ecto_simple",
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  port: "5432"
+
+# In your application code
+defmodule Sample.Repo do
+  use Ecto.Repo,
+    otp_app: :my_app,
+    adapter: Ecto.Adapters.Postgres
+end
+
+defmodule Sample.Weather do
+  use Ecto.Schema
+
+  schema "weather" do
+    # Defaults to type :string
+    field(:city)
+    field(:temp_lo, :integer)
+    field(:temp_hi, :integer)
+    field(:prcp, :float, default: 0.0)
+  end
+end
+
+defmodule Sample.App do
+  import Ecto.Query
+  alias Sample.{Weather, Repo}
+
+  def keyword_query do
+    query =
+      from(w in Weather,
+        where: w.prcp > 0 or is_nil(w.prcp),
+        select: w
+      )
+
+    Repo.all(query)
+  end
+
+  def pipe_query do
+    Weather
+    |> where(city: "Kraków")
+    |> order_by(:temp_lo)
+    |> limit(10)
+    |> Repo.all()
+  end
+end
 ```
 
 ## The bad
