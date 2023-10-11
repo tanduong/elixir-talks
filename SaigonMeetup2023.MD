@@ -3,6 +3,8 @@
 
 [Livebook](https://elixir-talk.fly.dev/)
 
+<!-- livebook:{"file_entries":[{"name":"ElixirConcurency.png","type":"attachment"},{"name":"ElixirConcurent.png","type":"attachment"},{"name":"thank.jpeg","type":"attachment"}]} -->
+
 # Elixir For Programmers
 
 ## Me - Tan Duong
@@ -25,6 +27,20 @@
   * Monolith Elixir/Phoenix
   * Frontend mixed Phoenix/LiveView/Elm
 
+## What would you expect in a programming language?
+
+| Category                    | My rating for Elixir |
+| --------------------------- | -------------------- |
+| Syntax                      | ⭐⭐⭐⭐⭐      |
+| Concurrency and Parallelism | ⭐⭐⭐⭐⭐      |
+| Performance                 | ⭐⭐⭐⭐         |
+| Document                    | ⭐⭐⭐⭐         |
+| Tooling                     | ⭐⭐⭐⭐         |
+| Long-Term Viability         | ⭐⭐⭐⭐         |
+| Ecosystem                   | ⭐⭐⭐            |
+| Learning Curve              | ⭐⭐⭐            |
+| Job                         | ⭐⭐               |
+
 ## Why Elixir?
 
 * [How WhatsApp scaled to 1 billion users with only 50 engineers](https://www.reddit.com/r/programming/comments/qfbs22/how_whatsapp_scaled_to_1_billion_users_with_only/)
@@ -38,7 +54,103 @@
 
 ![You merely adopted concurency. I was born in it, moled by it.](files/ElixirConcurency.png)
 
-## Learning a new language
+## Elixir Pros
+
+Elixir is a functional, concurrent, and general-purpose programming language that runs on the Erlang virtual machine (BEAM). It has gained popularity for building scalable and fault-tolerant distributed systems. Here are some of the pros of Elixir:
+
+1. **Concurrency and Fault Tolerance:** Elixir is built on the Erlang virtual machine, which is known for its excellent concurrency support and fault tolerance mechanisms. Elixir processes are lightweight and can handle thousands of concurrent connections, making it ideal for building highly concurrent and distributed applications.
+
+2. **Functional Programming:** Elixir is a functional programming language, which means it encourages immutable data and pure functions. This paradigm leads to more predictable code, easier debugging, and better support for parallel processing.
+
+3. **Scalability:** Elixir's actor model and lightweight processes allow for easy scalability. Applications built with Elixir can handle a large number of simultaneous users and messages, making it suitable for building scalable web applications and real-time systems.
+
+4. **Hot Code Swapping:** Elixir allows you to upgrade code in a running system without stopping it. This feature is crucial for applications that require high availability and cannot afford downtime during updates.
+
+5. **Robustness and Reliability:** Elixir's design promotes fault-tolerant systems. Processes isolate errors, preventing them from affecting the entire system. Supervision trees and the "let it crash" philosophy enable the system to recover from failures gracefully.
+
+6. **Metaprogramming:** Elixir provides powerful metaprogramming capabilities, allowing developers to write code that can generate other code dynamically. This can lead to more efficient and concise development practices.
+
+7. **Community and Libraries:** Elixir has a growing and active community. There are numerous libraries and frameworks available for different purposes, making it easier to find solutions and get help when needed.
+
+8. **Great Tooling:** Elixir comes with excellent tools like Mix (a build tool), ExUnit (a testing framework), and a robust package manager called Hex. These tools simplify common tasks, making development more efficient.
+
+9. **Interoperability:** Elixir can easily interoperate with existing Erlang code and libraries. This feature is particularly useful for organizations that want to leverage their existing Erlang infrastructure while benefiting from Elixir's modern syntax and features.
+
+10. **Functional and Concise Syntax:** Elixir's syntax is designed to be readable and expressive. It is concise and allows developers to express complex ideas in a compact and clear manner.
+
+Overall, Elixir's combination of concurrency support, fault tolerance, scalability, and a vibrant community make it a compelling choice for building robust and distributed applications.
+
+## Elixir Cons
+
+While Elixir offers many advantages, it also has its limitations and challenges. Here are some of the cons associated with Elixir:
+
+1. **Learning Curve:** Elixir's functional and concurrent programming paradigms, as well as its unique syntax, can be challenging for developers who are new to these concepts. Learning to think in terms of processes and message passing can be particularly difficult for those accustomed to imperative or object-oriented programming.
+
+2. **Limited Talent Pool:** While the Elixir community is growing, it is still smaller than communities around more established languages. Finding experienced Elixir developers can be challenging, which can impact hiring and project timelines.
+
+3. **Library Ecosystem:** While Elixir's library ecosystem is expanding, it may not be as extensive as those of more mainstream languages. Certain niche or specialized libraries might be missing, requiring developers to implement certain features from scratch or to find alternative solutions.
+
+4. **Performance:** While Elixir is generally fast and highly concurrent, it might not be as performant as low-level languages like C or C++. For computationally intensive tasks, Elixir might not be the best choice without integrating optimized native code, which can be complex.
+
+5. **Resource Intensive:** Elixir's lightweight processes are efficient, but they are not entirely free. Creating a vast number of processes can still consume memory. While the Erlang VM is optimized for handling many processes, very large-scale applications might need careful optimization and resource management.
+
+6. **Limited IDE and Tooling Support:** While Elixir has good tooling (such as Mix and ExUnit), the support for Integrated Development Environments (IDEs) might not be as rich as in some other languages. IDE features like autocompletion and refactoring tools are not as mature as in more mainstream languages.
+
+7. **Community and Documentation Quality:** While the Elixir community is active and helpful, the quality of community-contributed libraries and documentation can vary. Some libraries might be less well-documented or maintained compared to those in more established ecosystems.
+
+8. **Not a One-Size-Fits-All Solution:** While Elixir is excellent for certain use cases (e.g., distributed and real-time systems), it might not be the best choice for every application. For simpler, small-scale applications, using Elixir might introduce unnecessary complexity.
+
+9. **Maturity of Ecosystem:** While Elixir itself is stable, some libraries or frameworks might still be evolving. This can lead to issues with compatibility and stability, especially if relying on bleeding-edge technologies.
+
+Despite these limitations, Elixir remains a powerful choice for building scalable, fault-tolerant, and concurrent applications, especially in domains like telecommunications, messaging systems, and IoT applications. Developers need to carefully consider their specific requirements and constraints when choosing Elixir for a project.
+
+## Elixir Surprises
+
+Elixir is a language full of surprises, especially for developers coming from more traditional programming backgrounds. Here are a few aspects of Elixir that might surprise newcomers:
+
+1. **Immutability Everywhere:** In Elixir, variables are immutable. Once a variable holds a value, that value cannot be changed. This immutability encourages a functional programming style and can surprise developers who are used to mutable variables in languages like Java or Python.
+
+2. **Everything is a Process:** In Elixir, everything runs inside a process. Even lightweight operations are handled by processes. This can be surprising for developers who are used to threads or other concurrency models. Elixir's processes are incredibly lightweight, so creating thousands of them is not a problem.
+
+3. **Pattern Matching:** Elixir has powerful pattern matching capabilities. This allows for elegant and concise code, especially when dealing with complex data structures. Pattern matching can be surprising for developers unfamiliar with this feature, but it leads to expressive and readable code.
+
+4. **Concurrency Without Shared State:** Elixir processes communicate by passing messages. This message-passing concurrency model is different from shared-state concurrency models, and it can be surprising for developers used to dealing with locks and mutexes to manage shared data.
+
+5. **Metaprogramming:** Elixir allows for metaprogramming, which means you can write code that generates other code dynamically. This can be surprising for developers who haven't encountered metaprogramming before, and it can be a powerful tool for building abstractions and reducing boilerplate code.
+
+6. **Functional Pipelines:** Elixir supports functional pipelines, where the output of one function becomes the input of the next. This can lead to highly readable and expressive code, especially when performing a series of transformations on data. Developers coming from languages without this feature might find it surprising how elegant and clear code can become with pipelines.
+
+7. **Built-in Documentation:** Elixir has a built-in documentation system that is integrated into the language. Documentation is not just an afterthought; it's a fundamental part of the language and its ecosystem. This focus on documentation can be surprising, as it's not always the case in other programming languages.
+
+8. **Interactive Development with Mix:** Elixir developers often use the Mix tool, which provides interactive development features like code reloading and an interactive shell. Being able to modify code and see changes instantly without restarting the application can be surprising and incredibly productive.
+
+These surprises often lead to a shift in thinking for developers who are new to Elixir. Embracing these features can result in more concise, readable, and fault-tolerant code.
+
+## Relevant skills when learning a new language
+
+Learning a new programming language, like Elixir, offers more than just mastering its syntax; it refines your core programming skills, making you a more versatile developer. Many concepts are universal across programming languages, and acquiring these skills enhances your problem-solving abilities. Here are some key transferable skills you gain when learning a language like Elixir:
+
+1. **Problem-Solving Skills:** Programming fundamentally involves breaking down problems and devising algorithms to solve them. This skill is essential in any language and forms the basis of all programming endeavors.
+
+2. **Logical Thinking:** Programming languages demand logical thinking to create efficient solutions. Every language you learn sharpens your logical reasoning abilities, enabling you to approach problems systematically.
+
+3. **Syntax Familiarity:** While syntax varies, most languages share common structures like loops, conditionals, and functions. Learning a new language teaches you how to express these structures differently, expanding your adaptability.
+
+4. **Data Structures and Algorithms:** Understanding diverse data structures (arrays, linked lists, trees, etc.) and algorithms (sorting, searching, etc.) is universal knowledge. It's crucial for efficient coding and applicable across languages.
+
+5. **Debugging and Troubleshooting:** Identifying and fixing errors in code is a universal skill. Proficiency in debugging techniques is crucial, regardless of the language, ensuring your ability to create robust programs.
+
+6. **Testing:** Writing unit tests, understanding test-driven development (TDD), and ensuring code quality are skills that transcend language barriers. While specific testing frameworks may differ, the underlying principles remain consistent.
+
+7. **Documentation:** Navigating language and framework documentation efficiently is a valuable skill. Understanding how to find relevant information and apply it in your projects is vital for seamless development.
+
+8. **Understanding Paradigms:** Languages are categorized into different programming paradigms (object-oriented, functional, procedural, etc.). Learning a language from a different paradigm expands your programming horizons, encouraging you to approach problems from new perspectives.
+
+9. **Problem Domain Knowledge:** Many programming tasks require understanding specific domains like web development, data science, or game development. Knowledge of domain-specific concepts (e.g., authentication/authorization, file uploads, REST APIs) enhances your programming capabilities significantly.
+
+10. **Collaboration and Communication:** Working on projects and collaborating with other developers require effective communication and collaboration skills. Learning how to contribute, provide constructive feedback, and move projects forward are invaluable abilities in any programming environment.
+
+By focusing on these transferable skills while learning a new language like Elixir, you not only gain proficiency in that language but also become a more adaptable, versatile, and effective programmer overall.
 
 ### Some hands on tutorials
 
@@ -94,17 +206,11 @@
 
 ## Good part
 
-* Stable
-* Currency built in
-* Good syntax: pattern matching, pipe operator
-* Great documents
-* Great tooling, excellence test framework
-
 [From Elixir creator](https://evrone.com/blog/jose-valim-interview) (rephrased)
 
 > I had two goals: extensibility and productivity. Productivity was about focusing on having really good tooling. There are other languages, like Ruby and Go, that focus on tooling and the development experience. Extensibility boiled down to two things: Protocols to deal with polymorphism similar to Clojure and metaprogramming with Macro.
 
-## Some syntax
+## Some syntax showcase
 
 * Variable
 * Condition
